@@ -16,7 +16,10 @@
  */
 package com.precipicegames.mmoInfoWorld;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 import mmo.Core.MMOPlugin;
 import mmo.Core.InfoAPI.MMOInfoEvent;
 import mmo.Core.MMOListener;
@@ -25,6 +28,7 @@ import org.bukkit.Location;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.util.config.Configuration;
+import org.bukkit.util.config.ConfigurationNode;
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.Widget;
 import org.getspout.spoutapi.player.SpoutPlayer;
@@ -60,13 +64,25 @@ public class MMOInfoWorld extends MMOPlugin {
 	@Override
 	public void loadConfiguration(Configuration cfg) {
 		NameMap = new HashMap<String,String>();
-		for(String key : cfg.getKeys("world-alias"))
+		List<String> keys = cfg.getKeys("world-alias");
+		if(keys != null)
 		{
-			String alias = cfg.getString("world-alias." + key);
-			if(alias != null)
+			for(String key : keys)
 			{
-				NameMap.put(key, alias);
+				String alias = cfg.getString("world-alias." + key);
+				if(alias != null)
+				{
+					NameMap.put(key, alias);
+				}
 			}
+		}
+		else
+		{
+			HashMap<String, String> defaultlist = new HashMap<String,String>();
+			defaultlist.put("world", "World");
+			cfg.setProperty("world-alias", defaultlist);
+			cfg.save();
+			this.loadConfiguration(cfg);
 		}
 	}
 	public Widget updateDisplay(SpoutPlayer player) {
