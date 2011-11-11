@@ -1,0 +1,8 @@
+name: mmoInfoWorld
+main: com.precipicegames.mmoInfoWorld.MMOInfoWorld
+version: 1.0
+website: http://precipicegames.com
+author: dotblank <dotblank@precipicegames.com>
+depend: [mmoCore]
+
+description: Provides a display in mmoInfo for the current world
