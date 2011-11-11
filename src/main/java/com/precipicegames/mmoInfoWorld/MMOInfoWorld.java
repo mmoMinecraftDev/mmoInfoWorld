@@ -51,7 +51,9 @@ public class MMOInfoWorld extends MMOPlugin {
 							event.setWidget(plugin, updateDisplay(event.getPlayer()));
 						}
 					}}, Priority.Normal, this);
-		pm.registerEvent(Type.PLAYER_TELEPORT, new MMOInfoTeleListener(this), Priority.Normal, plugin);
+		MMOInfoTeleListener listen = new MMOInfoTeleListener(this);
+		pm.registerEvent(Type.PLAYER_TELEPORT, listen, Priority.Normal, plugin);
+		pm.registerEvent(Type.PLAYER_CHANGED_WORLD, listen, Priority.Normal, plugin);
 	}
 	public String getWorldName(Location l)
 	{

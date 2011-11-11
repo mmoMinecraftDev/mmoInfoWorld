@@ -1,5 +1,6 @@
 package com.precipicegames.mmoInfoWorld;
 
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.getspout.spoutapi.SpoutManager;
@@ -13,6 +14,14 @@ public class MMOInfoTeleListener extends PlayerListener {
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
 		if(event.isCancelled())
 			return;
+		SpoutPlayer sp= SpoutManager.getPlayer(event.getPlayer());
+		if(sp.isSpoutCraftEnabled())
+		{
+			plugin.updateDisplay(sp);
+		}
+	}
+	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) 
+	{
 		SpoutPlayer sp= SpoutManager.getPlayer(event.getPlayer());
 		if(sp.isSpoutCraftEnabled())
 		{
