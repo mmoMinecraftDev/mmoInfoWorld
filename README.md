@@ -6,5 +6,5 @@ Because world names are sometimes ugly, I have added alias support.
 Example:
 in plugins/mmoInfoWorld/mmoInfoWorld.yml
 
-world-alias:
-    world: Earth
+    world-alias:
+         world: Earth
