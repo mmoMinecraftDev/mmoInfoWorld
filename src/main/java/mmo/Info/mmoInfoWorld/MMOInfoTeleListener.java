@@ -1,4 +1,4 @@
-package com.precipicegames.mmoInfoWorld;
+package mmo.Info.mmoInfoWorld;
 
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerListener;

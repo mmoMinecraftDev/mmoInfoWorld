@@ -19,11 +19,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Project information -->
-	<groupId>com.precipicegames</groupId>
+	<groupId>mmo.Info</groupId>
 	<artifactId>mmoInfoWorld</artifactId>
 	<name>mmoInfoWorld</name>
 	<version>dev</version>
-	<url>http://precipicegames.com</url>
+	<url>http://github.com/mmoMinecraftDev/mmoInfoWorld</url>
 	<description>mmoInfoWorld provides a world tag for the current world a player is in.</description>
 
 	<properties>

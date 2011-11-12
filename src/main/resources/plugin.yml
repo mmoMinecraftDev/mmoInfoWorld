@@ -1,7 +1,7 @@
 name: mmoInfoWorld
-main: com.precipicegames.mmoInfoWorld.MMOInfoWorld
+main: mmo.Info.mmoInfoWorld.MMOInfoWorld
 version: 1.0
-website: http://precipicegames.com
+website: https://github.com/mmoMinecraftDev/mmoInfoWorld
 author: dotblank <dotblank@precipicegames.com>
 depend: [mmoCore]
 
