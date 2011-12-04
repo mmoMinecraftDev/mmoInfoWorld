@@ -3,6 +3,6 @@ main: mmo.Info.mmoInfoWorld.MMOInfoWorld
 version: 1.0
 website: https://github.com/mmoMinecraftDev/mmoInfoWorld
 author: dotblank <dotblank@precipicegames.com>
-depend: [mmoCore]
+depend: [Spout,mmoCore]
 
 description: Provides a display in mmoInfo for the current world

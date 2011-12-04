@@ -35,63 +35,62 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 @SuppressWarnings("deprecation")
 public class MMOInfoWorld extends MMOPlugin {
-	private HashMap<SpoutPlayer,GenericLabel> worldLabels;
-	private HashMap<String,String> NameMap;
+
+	private HashMap<SpoutPlayer, GenericLabel> worldLabels;
+	private HashMap<String, String> NameMap;
 
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		worldLabels = new HashMap<SpoutPlayer,GenericLabel>();
-		
+		worldLabels = new HashMap<SpoutPlayer, GenericLabel>();
+
 		pm.registerEvent(Type.CUSTOM_EVENT,
 				new MMOListener() {
+
 					@Override
 					public void onMMOInfo(MMOInfoEvent event) {
 						if (event.isToken("world")) {
 							event.setWidget(plugin, updateDisplay(event.getPlayer()));
 						}
-					}}, Priority.Normal, this);
+					}
+				}, Priority.Normal, this);
 		MMOInfoTeleListener listen = new MMOInfoTeleListener(this);
 		pm.registerEvent(Type.PLAYER_TELEPORT, listen, Priority.Normal, plugin);
 		pm.registerEvent(Type.PLAYER_CHANGED_WORLD, listen, Priority.Normal, plugin);
 	}
-	public String getWorldName(Location l)
-	{
-		if(NameMap == null)
+
+	public String getWorldName(Location l) {
+		if (NameMap == null) {
 			return l.getWorld().getName();
-		String alias  = NameMap.get(l.getWorld().getName()); 
+		}
+		String alias = NameMap.get(l.getWorld().getName());
 		return (alias != null) ? alias : l.getWorld().getName();
 	}
 
 	@Override
 	public void loadConfiguration(Configuration cfg) {
-		NameMap = new HashMap<String,String>();
+		NameMap = new HashMap<String, String>();
 		List<String> keys = cfg.getKeys("world-alias");
-		if(keys != null)
-		{
-			for(String key : keys)
-			{
+		if (keys != null) {
+			for (String key : keys) {
 				String alias = cfg.getString("world-alias." + key);
-				if(alias != null)
-				{
+				if (alias != null) {
 					NameMap.put(key, alias);
 				}
 			}
-		}
-		else
-		{
-			HashMap<String, String> defaultlist = new HashMap<String,String>();
+		} else {
+			HashMap<String, String> defaultlist = new HashMap<String, String>();
 			defaultlist.put("world", "World");
 			cfg.setProperty("world-alias", defaultlist);
 			cfg.save();
 			this.loadConfiguration(cfg);
 		}
 	}
+
 	public Widget updateDisplay(SpoutPlayer player) {
 		GenericLabel text = worldLabels.get(player);
 		text = (text == null) ? (GenericLabel) new GenericLabel().setResize(true).setFixed(true) : text;
-		if(text.getText() == null || !text.getText().equalsIgnoreCase(getWorldName(player.getLocation())))
-		{
+		if (text.getText() == null || !text.getText().equalsIgnoreCase(getWorldName(player.getLocation()))) {
 			text.setText(getWorldName(player.getLocation()));
 			text.setDirty(true);
 		}
