@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<groupId>mmo.Info</groupId>
 	<artifactId>mmoInfoWorld</artifactId>
 	<name>mmoInfoWorld</name>
-	<version>dev</version>
+	<version>dev-SNAPSHOT</version>
 	<url>http://github.com/mmoMinecraftDev/mmoInfoWorld</url>
 	<description>mmoInfoWorld provides a world tag for the current world a player is in.</description>
 
@@ -39,15 +39,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		</license>
 	</licenses>
 
+    <!-- Source code -->
+	<scm>
+		<developerConnection>scm:git:git@github.com:mmoMinecraftDev/${project.name}.git</developerConnection>
+		<connection>scm:git:git://github.com/mmoMinecraftDev/${project.name}.git</connection>
+		<url>https://github.com/mmoMinecraftDev/${project.name}</url>
+	</scm>
+
     <!-- Continuous integration -->
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://ci.mmo.me.uk/</url>
+	</ciManagement>
+
 	<!-- Repository locations -->
 	<repositories>
-		<repository>
-			<id>bukkit-repo</id>
-			<name>bukkit Plugin API</name>
-			<url>http://repo.bukkit.org/artifactory/repo/</url>
-			<layout>default</layout>
-		</repository>
 		<repository>
 			<id>spout-repo</id>
 			<name>Spout API</name>
@@ -57,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<repository>
 			<id>mmoMinecraft-repo</id>
 			<name>mmoMinecraft API</name>
-			<url>http://repo.mmo.me.uk</url>
+			<url>http://repo.mmo.me.uk/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -65,21 +71,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- Dependencies -->
 	<dependencies>
 		<dependency>
-			<groupId>org.getspout</groupId>
-			<artifactId>spoutapi</artifactId>
-			<version>dev-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>1.0.0-R1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.getspout</groupId>
+			<artifactId>spoutapi</artifactId>
+			<version>dev-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>mmo.Core</groupId>
 			<artifactId>mmoCore</artifactId>
-			<version>dev</version>
+			<version>dev-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>mmo.Info</groupId>
+			<artifactId>mmoInfo</artifactId>
+			<version>dev-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
