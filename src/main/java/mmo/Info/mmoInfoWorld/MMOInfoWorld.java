@@ -1,7 +1,7 @@
 /*
- * This file is part of mmoMinecraft (https://github.com/mmoMinecraftDev).
+ * This file is part of mmoInfoWorld <http://github.com/mmoMinecraftDev/mmoInfoWorld>.
  *
- * mmoMinecraft is free software: you can redistribute it and/or modify
+ * mmoInfoWorld is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -28,13 +28,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.Widget;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class MMOInfoWorld extends MMOPlugin implements Listener {
-
 	private HashMap<SpoutPlayer, GenericLabel> worldLabels;
 	private HashMap<String, String> NameMap;
 
@@ -44,25 +44,25 @@ public class MMOInfoWorld extends MMOPlugin implements Listener {
 		worldLabels = new HashMap<SpoutPlayer, GenericLabel>();
 		getServer().getPluginManager().registerEvents(this, this);
 	}
-	
+
 	@EventHandler
 	public void onMMOInfo(MMOInfoEvent event) {
 		if (event.isToken("world")) {
 			event.setWidget(plugin, updateDisplay(event.getPlayer()));
 		}
 	}
-	
+
 	@EventHandler
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
-		if(event.isCancelled())
+		if(event.isCancelled()) {
 			return;
+		}
 		SpoutPlayer sp= SpoutManager.getPlayer(event.getPlayer());
 		if(sp.isSpoutCraftEnabled()) updateDisplay(sp);
 	}
-	
+
 	@EventHandler
-	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) 
-	{
+	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
 		SpoutPlayer sp= SpoutManager.getPlayer(event.getPlayer());
 		if(sp.isSpoutCraftEnabled()) updateDisplay(sp);
 	}

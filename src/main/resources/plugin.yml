@@ -1,8 +1,8 @@
 name: mmoInfoWorld
-main: mmo.Info.mmoInfoWorld.MMOInfoWorld
-version: 1.1
-website: https://github.com/mmoMinecraftDev/mmoInfoWorld
-author: dotblank <dotblank@precipicegames.com>
-depend: [Spout,mmoCore]
+version: ${releaseVersion} b${buildNumber}
+description: Adds a {world} token to the mmoInfo token list for the current world a player is in.
+author: mmoMinecraftDev
+website: http://mmo.me.uk
 
-description: Provides a display in mmoInfo for the current world
+main: mmo.Info.mmoInfoWorld.MMOInfoWorld
+depend: [Spout, mmoCore]
