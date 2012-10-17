@@ -61,8 +61,7 @@ implements Listener
 
 	public EnumBitSet mmoSupport(EnumBitSet support)
 	{
-		support.set(MMOPlugin.Support.MMO_AUTO_EXTRACT);
-		System.out.println("Running Extractor");
+		support.set(MMOPlugin.Support.MMO_AUTO_EXTRACT);		
 		return support;
 	}
 	
@@ -109,8 +108,7 @@ implements Listener
 		this.NameMap = new HashMap();
 		Set <String>keys = cfg.getKeys(true);
 		if (keys != null) {
-			for (String key : keys) {
-				System.out.println(key);
+			for (String key : keys) {				
 				if (key.startsWith("world-alias.")) {
 					String alias = cfg.getString(key);
 					if (alias == null) continue; this.NameMap.put(key.substring(key.indexOf('.') + 1), alias);
