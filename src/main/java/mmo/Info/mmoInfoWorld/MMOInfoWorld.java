@@ -126,7 +126,7 @@ implements Listener
 		GenericLabel text = (GenericLabel)this.worldLabels.get(player);
 		text = text == null ? (GenericLabel)new GenericLabel().setResize(true).setFixed(true) : text;
 		if ((text.getText() == null) || (!text.getText().equalsIgnoreCase(getWorldName(player.getLocation())))) {
-			text.setText(": "+getWorldName(player.getLocation()));			
+			text.setText(getWorldName(player.getLocation()));			
 			text.setDirty(true);
 		}
 		this.worldLabels.put(player, text);
